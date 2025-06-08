@@ -12,14 +12,14 @@ The package is lightweight, easy to use, and works well inside CI/CD pipelines, 
 
 ## Key Features
 
-✔ Run SQL queries directly from the CLI  
-✔ Schedule queries at regular intervals (seconds, minutes, hours, days)  
-✔ Compatible with Starburst Galaxy and Starburst Enterprise  
-✔ Easy to install — no complex setup required  
-✔ Designed to integrate with Slack, Mattermost, and other tools (feature coming soon!)  
-✔ Works with Python 3.9+  
-✔ Supports secure password input  
-✔ Designed for extensibility (you can add custom output actions easily)
+ Run SQL queries directly from the CLI  
+ Schedule queries at regular intervals (seconds, minutes, hours, days)  
+ Compatible with Starburst Galaxy and Starburst Enterprise  
+ Easy to install no complex setup required  
+ Designed to integrate with Slack, Mattermost, and other tools (feature coming soon!)  
+ Works with Python 3.9+  
+ Supports secure password input  
+ Designed for extensibility (you can add custom output actions easily)
 
 ## Installation
 
@@ -43,20 +43,20 @@ starburst-scheduler schedule-query --host <host> --port <port> --user <user> --p
 
 ## Planned Enhancements
 
-✔ Slack & Mattermost integration:  
+ Slack & Mattermost integration:  
 -> When a query runs, results can be automatically posted to your team chat.  
 -> Example: Monitor active queries, cluster status, send alerts.
 
-✔ CSV/JSON output:  
+ CSV/JSON output:  
 -> Option to save query results to CSV / JSON for use in data pipelines.
 
-✔ Advanced scheduling:  
+ Advanced scheduling:  
 -> Support cron expressions, weekly/monthly jobs.
 
-✔ Email notifications:  
+ Email notifications:  
 -> Option to send query results by email.
 
-✔ Error alerting:  
+ Error alerting:  
 -> Notify on failed query runs.
 
 ## License

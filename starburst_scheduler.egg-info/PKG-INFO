@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: starburst_scheduler
-Version: 0.1.2
+Version: 0.1.6
 Summary: A pip package to run and schedule queries on Starburst clusters.
 Home-page: https://github.com/karranikhilreddy99/starburst_scheduler
 Author: Nikhil Reddy Karra
@@ -38,14 +38,14 @@ The package is lightweight, easy to use, and works well inside CI/CD pipelines, 
 
 ## Key Features
 
-âœ” Run SQL queries directly from the CLI  
-âœ” Schedule queries at regular intervals (seconds, minutes, hours, days)  
-âœ” Compatible with Starburst Galaxy and Starburst Enterprise  
-âœ” Easy to install â€” no complex setup required  
-âœ” Designed to integrate with Slack, Mattermost, and other tools (feature coming soon!)  
-âœ” Works with Python 3.9+  
-âœ” Supports secure password input  
-âœ” Designed for extensibility (you can add custom output actions easily)
+ Run SQL queries directly from the CLI  
+ Schedule queries at regular intervals (seconds, minutes, hours, days)  
+ Compatible with Starburst Galaxy and Starburst Enterprise  
+ Easy to install no complex setup required  
+ Designed to integrate with Slack, Mattermost, and other tools (feature coming soon!)  
+ Works with Python 3.9+  
+ Supports secure password input  
+ Designed for extensibility (you can add custom output actions easily)
 
 ## Installation
 
@@ -69,20 +69,20 @@ starburst-scheduler schedule-query --host <host> --port <port> --user <user> --p
 
 ## Planned Enhancements
 
-âœ” Slack & Mattermost integration:  
+ Slack & Mattermost integration:  
 -> When a query runs, results can be automatically posted to your team chat.  
 -> Example: Monitor active queries, cluster status, send alerts.
 
-âœ” CSV/JSON output:  
+ CSV/JSON output:  
 -> Option to save query results to CSV / JSON for use in data pipelines.
 
-âœ” Advanced scheduling:  
+ Advanced scheduling:  
 -> Support cron expressions, weekly/monthly jobs.
 
-âœ” Email notifications:  
+ Email notifications:  
 -> Option to send query results by email.
 
-âœ” Error alerting:  
+ Error alerting:  
 -> Notify on failed query runs.
 
 ## License

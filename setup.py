@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="starburst_scheduler",
-    version="0.1.2",
+    version="0.1.6",
     packages=find_packages(),
     install_requires=[
         "pystarburst>=0.1.1",
