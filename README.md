@@ -1,76 +1,139 @@
 
+---
+
 # Starburst Scheduler
 
-A Python pip package to run and schedule SQL queries on **Starburst Galaxy** or **Starburst Enterprise** clusters.
+A Python CLI tool to run and schedule SQL queries on **Starburst Galaxy** or **Starburst Enterprise** clusters.
 
-It provides a **simple command-line interface (CLI)** to run queries once or on a schedule, and is designed for:
-- Automating reports
-- Monitoring Starburst cluster health
-- Sending query results to collaboration tools (coming soon)
-
-The package is lightweight, easy to use, and works well inside CI/CD pipelines, on servers, or in developer environments.
-
-## Key Features
-
- Run SQL queries directly from the CLI  
- Schedule queries at regular intervals (seconds, minutes, hours, days)  
- Compatible with Starburst Galaxy and Starburst Enterprise  
- Easy to install no complex setup required  
- Designed to integrate with Slack, Mattermost, and other tools (feature coming soon!)  
- Works with Python 3.9+  
- Supports secure password input  
- Designed for extensibility (you can add custom output actions easily)
+---
 
 ## Installation
 
 ```bash
-pip install starburst_scheduler
+pip install starburst-scheduler
 ```
+
+---
+
+## Requirements
+
+* Starburst Galaxy or Enterprise cluster (e.g., `free-cluster.trino.galaxy.starburst.io`)
+* Valid Starburst username and password
+* Python 3.9 or above
+
+---
 
 ## Usage
 
-### Run a Single Query
+### Run a One-Time Query
 
 ```bash
-starburst-scheduler run-query --host <host> --port <port> --user <user> --password <password> --catalog sample --schema burstbank --query "SELECT * FROM system.runtime.nodes"
+starburst-scheduler run-query \
+  --host free-cluster.trino.galaxy.starburst.io \
+  --user your-user@domain.com \
+  --password your-password \
+  --catalog tpch \
+  --schema tiny \
+  --query "SELECT 1"
 ```
 
-### Schedule a Query
+### Use Environment Variable (Secure)
 
 ```bash
-starburst-scheduler schedule-query --host <host> --port <port> --user <user> --password <password> --catalog sample --schema burstbank --query "SELECT * FROM system.runtime.nodes" --frequency 60 --time-unit seconds
+# macOS/Linux
+export STARBURST_PASSWORD=your-password
+
+# Windows
+set STARBURST_PASSWORD=your-password
+
+starburst-scheduler run-query \
+  --host free-cluster.trino.galaxy.starburst.io \
+  --user your-user@domain.com \
+  --catalog tpch \
+  --schema tiny \
+  --query "SELECT 1"
 ```
 
-## Planned Enhancements
+> Note: Default `--http-scheme` is `https`. Use `--http-scheme http` only for local insecure clusters.
 
- Slack & Mattermost integration:  
--> When a query runs, results can be automatically posted to your team chat.  
--> Example: Monitor active queries, cluster status, send alerts.
+---
 
- CSV/JSON output:  
--> Option to save query results to CSV / JSON for use in data pipelines.
+### Schedule a Repeating Query
 
- Advanced scheduling:  
--> Support cron expressions, weekly/monthly jobs.
+```bash
+starburst-scheduler schedule-query \
+  --host free-cluster.trino.galaxy.starburst.io \
+  --user your-user@domain.com \
+  --password your-password \
+  --catalog tpch \
+  --schema tiny \
+  --query "SELECT * FROM nation" \
+  --frequency 60 \
+  --time-unit seconds
+```
 
- Email notifications:  
--> Option to send query results by email.
+This runs the query every 60 seconds until manually stopped (Ctrl + C).
 
- Error alerting:  
--> Notify on failed query runs.
+---
+
+## CLI Options
+
+| Option          | Description                               |
+| --------------- | ----------------------------------------- |
+| `--host`        | Starburst cluster host                    |
+| `--user`        | Starburst username or email               |
+| `--password`    | Starburst password (or use env var)       |
+| `--catalog`     | Catalog to query                          |
+| `--schema`      | Schema to query                           |
+| `--query`       | SQL query string                          |
+| `--http-scheme` | `https` (default) or `http` for local use |
+| `--frequency`   | Frequency for scheduled query             |
+| `--time-unit`   | Time unit (`seconds`, `minutes`, `hours`) |
+
+---
+
+## Troubleshooting
+
+### Common Issues
+
+* **Cluster Inactive**
+  Start it at: [https://galaxy.starburst.io/home](https://galaxy.starburst.io/home)
+
+* **401 Unauthorized**
+
+  * Wrong credentials
+  * Quotes in environment variable
+  * Cluster not started
+
+* **Connection Errors**
+
+  * Wrong `--host` or `--http-scheme`
+
+* **Access Denied**
+
+  * User lacks permission on catalog/schema
+
+* **Broken Installation**
+
+  ```bash
+  pip install --force-reinstall starburst-scheduler
+  ```
+
+---
+
+---
 
 ## License
 
 MIT License
 
-## GitHub Repository
+---
 
-[https://github.com/karranikhilreddy99/starburst_scheduler](https://github.com/karranikhilreddy99/starburst_scheduler)
+## Contributing
 
-## Summary
+Contributions are welcome. Submit issues or pull requests at:
+[https://github.com/karranikhilreddy99/starburst\_scheduler](https://github.com/karranikhilreddy99/starburst_scheduler)
 
-Starburst Scheduler makes it simple to:
-- Run queries manually  
-- Automate reporting  
-- Monitor Starburst cluster health  
-- Send alerts (Slack, Mattermost coming soon!)
+---
+
+Let me know if you want this delivered as a downloadable `.md` or `.docx` file.

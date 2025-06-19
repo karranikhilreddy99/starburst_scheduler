@@ -1,10 +1,9 @@
-
 import schedule
 import time
 import logging
 from .connector import StarburstConnector
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 class QueryScheduler:
     def __init__(self, connector):
@@ -13,7 +12,7 @@ class QueryScheduler:
 
     def schedule_query(self, query, frequency, time_unit="seconds"):
         def job():
-            logging.info(f"Running query: {query}")
+            logging.info(f"Running scheduled query: {query}")
             result = self.connector.execute_query(query)
             if result:
                 logging.info(f"Query result: {result}")
@@ -30,6 +29,7 @@ class QueryScheduler:
             raise ValueError("Unsupported time unit. Use seconds, minutes, hours, or days.")
 
         self.jobs.append(job)
+        logging.info(f"Scheduled query: {query} every {frequency} {time_unit}")
         return job
 
     def run(self):

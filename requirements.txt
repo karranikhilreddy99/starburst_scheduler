@@ -1,4 +1,3 @@
-
 pystarburst>=0.1.1
 trino>=0.305.0
 schedule>=1.1.0

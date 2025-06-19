@@ -1,3 +1,5 @@
+LICENSE
+MANIFEST.in
 README.md
 setup.py
 starburst_scheduler/__init__.py
@@ -10,4 +12,5 @@ starburst_scheduler.egg-info/dependency_links.txt
 starburst_scheduler.egg-info/entry_points.txt
 starburst_scheduler.egg-info/requires.txt
 starburst_scheduler.egg-info/top_level.txt
+tests/__init__.py
 tests/test_connector.py
